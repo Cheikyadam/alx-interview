@@ -3,6 +3,9 @@
 
 
 def pascal_triangle(n):
+    """ pascal triangle main function"""
+    if n <= 0:
+        return []
     if n > 0:
         triangle = init_triangle(n)
         if n <= 2:
@@ -15,6 +18,7 @@ def pascal_triangle(n):
 
 
 def init_triangle(n):
+    """ pacal triangle initialization """
     triangle = []
     for j in range(n):
         row = []
