@@ -4,34 +4,31 @@ import sys
 
 
 def print_usage():
-    """helper func"""
+    """helper printing"""
     print("Usage: nqueens N")
     sys.exit(1)
 
 
 def is_valid(board, row, col):
-    """validation func"""
+    """helper validation"""
     for i in range(row):
         if board[i] == col or \
-                board[i] - i == col - row or \
-                board[i] + i == col + row:
+           board[i] - i == col - row or \
+           board[i] + i == col + row:
             return False
     return True
 
 
 def solve_nqueens(N, board, row, solutions):
-    """n queens solving"""
+    """solving nqueens"""
     if row == N:
-        solutions.append(board[:])
+        solutions.append([[i, board[i]] for i in range(N)])
         return
 
     for col in range(N):
         if is_valid(board, row, col):
             board[row] = col
-            solve_nqueens(
-                    N,
-                    board,
-                    row + 1, solutions)
+            solve_nqueens(N, board, row + 1, solutions)
 
 
 def main():
@@ -58,5 +55,5 @@ def main():
 
 
 if __name__ == "__main__":
-    """main running"""
+    """run main"""
     main()
