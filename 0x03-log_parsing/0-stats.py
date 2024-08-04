@@ -49,3 +49,4 @@ for line in sys.stdin:
     if cpt == 10:
         print_stat()
         cpt = 0
+print_stat()
