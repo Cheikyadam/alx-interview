@@ -36,13 +36,14 @@ def addtologs(numbers):
     logs[numbers[0]] = oldcode + 1
 
 
-cpt = 1
+cpt = 0
 signal.signal(signal.SIGINT, handler)
 for line in sys.stdin:
-    if cpt == 10:
-        print_stat()
-        cpt = 1
-        logs = {}
     numbers = re.findall(r'\d+', line)
     addtologs(numbers[-2:])
     cpt = cpt + 1
+    if cpt == 10:
+        print_stat()
+        cpt = 0
+        logs = {}
+
