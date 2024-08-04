@@ -12,7 +12,7 @@ logs = {}
 def print_stat():
     """to print stats"""
     size = logs.get("Filesize")
-    if size is not None and size != 0:
+    if (size is not None) and (size != 0):
         sortlog = OrderedDict(sorted(logs.items()))
         print(f"File size: {logs.get('Filesize')}")
         printcpt = 0
