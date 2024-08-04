@@ -31,14 +31,15 @@ def handler(signum, frame):
 
 def addtologs(numbers):
     """add stats"""
-    oldsize = logs.get("Filesize")
-    if oldsize is None:
-        oldsize = 0
-    logs['Filesize'] = oldsize + int(numbers[1])
-    oldcode = logs.get(numbers[0])
-    if oldcode is None:
-        oldcode = 0
-    logs[numbers[0]] = oldcode + 1
+    if len(numbers) >= 2:
+        oldsize = logs.get("Filesize")
+        if oldsize is None:
+            oldsize = 0
+        logs['Filesize'] = oldsize + int(numbers[1])
+        oldcode = logs.get(numbers[0])
+        if oldcode is None:
+            oldcode = 0
+        logs[numbers[0]] = oldcode + 1
 
 
 cpt = 0
