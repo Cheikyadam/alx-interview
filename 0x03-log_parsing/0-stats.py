@@ -3,6 +3,7 @@
 import sys
 import signal
 import re
+from collections import OrderedDict
 
 
 logs = {}
@@ -11,8 +12,9 @@ logs = {}
 def print_stat():
     """to print stats"""
     if logs.get("Filesize") is not None:
+        sortlog = OrderedDict(sorted(logs.items()))
         print(f"File size: {logs.get('Filesize')}")
-        for key, value in logs.items():
+        for key, value in sortlog.items():
             if key != "Filesize":
                 print(f"{key}: {value}")
 
@@ -34,12 +36,12 @@ def addtologs(numbers):
     logs[numbers[0]] = oldcode + 1
 
 
-cpt = 0
+cpt = 1
 signal.signal(signal.SIGINT, handler)
 for line in sys.stdin:
     if cpt == 10:
         print_stat()
-        cpt = 0
+        cpt = 1
         logs = {}
     numbers = re.findall(r'\d+', line)
     addtologs(numbers[-2:])
