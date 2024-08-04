@@ -14,9 +14,13 @@ def print_stat():
     if logs.get("Filesize") is not None:
         sortlog = OrderedDict(sorted(logs.items()))
         print(f"File size: {logs.get('Filesize')}")
+        printcpt = 0
         for key, value in sortlog.items():
             if key != "Filesize":
                 print(f"{key}: {value}")
+                printcpt = printcpt + 1
+                if printcpt == 10:
+                    break
 
 
 def handler(signum, frame):
@@ -45,5 +49,3 @@ for line in sys.stdin:
     if cpt == 10:
         print_stat()
         cpt = 0
-        logs = {}
-
