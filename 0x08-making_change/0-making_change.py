@@ -10,8 +10,7 @@ def makeChange(coins, total):
     coins.sort()
     nb_coins = 0
     while i >= 0:
-        curr = total // coins[i]
-        nb_coins += curr
+        nb_coins += total // coins[i]
         total = total % coins[i]
         if total == 0:
             return nb_coins
